@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch || Created by jainam</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .main{
+            background-color: rgb(204, 247, 255);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .child{
+            text-align: center;
+        }
+
+        .child > h2{
+            margin: 5px;
+            color:blue;
+        }
+
+        #title{
+            color: rgb(131, 104, 104);
+        }
+
+        #start{
+            color: green;
+            transition: 0.5s linear;
+        }
+
+        #start:hover{
+            box-shadow: -5px -1px 3px green;
+        }
+    
+        #stop{
+            color:red;
+            transition: 0.5s linear;     
+        }
+
+        #stop:hover{
+            box-shadow: -5px -1px 3px red;
+        }
+
+        #reset:hover{
+            transition: 0.5s linear;
+            box-shadow: -5px -1px 3px blue;
+        }
+
+
+        .child > button{
+            padding:5px 8px;
+            background-color: transparent;
+            border: 2px solid rgb(224, 224, 232);
+            border-radius: 5px;
+            color:blue;
+            font-weight: 600;
+            width:80px;
+            margin: 8px;
+            font-size: 18px;
+        }
+
+        /* media Query :  */
+
+        @media(max-width:600px) {
+            .main{
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+            }
+
+            #title{
+                font-size: 20px;
+                margin-bottom: 40px;
+            }
+
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="main">
+        <div class="child">
+            <h2 id="title">Project 1 : Creating A Stop Watch  </h2>
+
+            <h2><span id="hour">00 </span><span> : </span></span><span id="min">00 </span><span> : </span><span id="sec">00</span></h2>
+
+            <button id="start" onclick="startCnt()">Start</button>
+            <button id="stop" onclick="stopCnt()">Stop</button>
+            <button id="reset" onclick="resetCnt()">Reset</button>
+        </div>
+    </div>
+
+
+    <script>
+        let sec=document.getElementById("sec");
+        let min=document.getElementById("min");
+        let hur=document.getElementById("hour");
+
+        let stop= document.getElementById("stop");
+        let reset= document.getElementById("reset");
+
+        let secCnt=00;
+        let minCnt=00;
+        let hurCnt=00;
+        
+        const timer=setInterval(startCnt,1000);
+
+        // Start Timer Counter Code : 
+
+        function startCnt(){
+
+            secCnt+=1;
+            sec.innerHTML=secCnt;
+
+            if(secCnt==60){
+                secCnt=00;
+                minCnt+=1;
+                min.innerHTML=minCnt;
+                sec.innerHTML=secCnt;
+
+                if(minCnt==60){
+                    minCnt=00;
+                    hurCnt+=1;
+                    min.innerHTML=minCnt;
+                    hur.innerHTML=hurCnt;
+                }
+            }
+        }
+
+        // Stop Timer Counter Code : 
+        function stopCnt(){
+            
+            clearInterval(timer);
+
+        }
+
+        // Reset Timer Counter Code:   * Using Fat arrow function ()=> { } *
+
+        const resetCnt= ()=>{
+            hurCnt=0;
+            secCnt=0;
+            minCnt=0;
+
+            sec.innerText=secCnt;
+            min.innerText=minCnt;
+            hur.innerText=hurCnt;
+        }
+        
+        </script>
+    
+</body>
+</html>
