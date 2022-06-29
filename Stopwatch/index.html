@@ -114,11 +114,11 @@
         let minCnt=00;
         let hurCnt=00;
         
-        const timer=setInterval(startCnt,1000);
+        
 
         // Start Timer Counter Code : 
 
-        function startCnt(){
+        function startTime(){
 
             secCnt+=1;
             sec.innerHTML=secCnt;
@@ -136,6 +136,12 @@
                     hur.innerHTML=hurCnt;
                 }
             }
+        }
+
+        let timer;
+
+        function startCnt(){
+             timer=setInterval(startTime,1000);
         }
 
         // Stop Timer Counter Code : 
